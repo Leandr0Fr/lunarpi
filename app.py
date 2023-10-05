@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, make_response
+from flask import Flask, jsonify, request, make_response, render_template
 import os
 from model import prediction
 
@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return render_template('index.html')
 
 @app.route("/ping", methods=["GET"])
 def ping():
