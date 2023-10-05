@@ -1,21 +1,24 @@
 from flask import Flask, jsonify, request, make_response, render_template
 import os
 from model import prediction
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 CORS(app)
 
+@cross_origin
 @app.route('/')
 def hello_world():
     return render_template('index.html')
 
+@cross_origin
 @app.route("/ping", methods=["GET"])
 def ping():
     response = make_response(jsonify(message='API on!'))
     response.status_code = 200
     return response
 
+@cross_origin
 @app.route('/predict', methods=['POST'])
 def predict():
     #Recibe y guarda la imagen
