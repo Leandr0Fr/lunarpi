@@ -1,8 +1,10 @@
 from flask import Flask, jsonify, request, make_response, render_template
 import os
 from model import prediction
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def hello_world():
